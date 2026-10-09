@@ -1,0 +1,1637 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f5ee">
+<title>LEPÍ — вкус домашнего уюта</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #f7f5ee;
+  --white: #fffefa;
+  --green: #65734f;
+  --green-dark: #414c32;
+  --text: #302f29;
+  --muted: #888579;
+  --line: #e9e4d9;
+  --brown: #9b7556;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+}
+
+body.locked { overflow: hidden; }
+
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(1320px, calc(100% - 64px));
+  margin: auto;
+}
+
+.topline {
+  padding: 13px;
+  background: var(--green-dark);
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(247,245,238,.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 46px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.logo span { color: var(--green); }
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  font-size: 14px;
+}
+
+nav a:hover, .footer-links a:hover { color: var(--green); }
+
+.cart-button {
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: 30px;
+  padding: 13px 18px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  margin-left: 5px;
+  border-radius: 30px;
+  background: var(--green);
+  color: white;
+  font-size: 11px;
+}
+
+.hero { padding: 90px 0 75px; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 75px;
+}
+
+.eyebrow {
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(64px, 7vw, 100px);
+  line-height: .94;
+  letter-spacing: -2px;
+  font-weight: 500;
+  margin: 22px 0;
+}
+
+h1 em { color: var(--green); }
+
+.hero-copy {
+  color: #777468;
+  line-height: 1.9;
+  max-width: 500px;
+  font-size: 16px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 40px;
+  background: var(--green);
+  color: white;
+  padding: 17px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s, transform .2s;
+}
+
+.primary-button:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled {
+  opacity: .6;
+  cursor: wait;
+  transform: none;
+}
+
+.secondary-button {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 40px;
+  padding: 16px 23px;
+  font-size: 14px;
+}
+
+.hero-image {
+  min-height: 570px;
+  border-radius: 220px 220px 22px 22px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.06)),
+    url("https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=85")
+    center / cover;
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 30px 0;
+  margin-bottom: 100px;
+}
+
+.benefit {
+  text-align: center;
+  padding: 6px 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.benefit strong {
+  display: block;
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.section-heading h2, .about h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(48px,5vw,66px);
+  line-height: 1;
+  font-weight: 500;
+  margin: 12px 0 0;
+}
+
+.section-note {
+  max-width: 330px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.filters {
+  display: flex;
+  gap: 9px;
+  overflow-x: auto;
+  padding: 2px 0 18px;
+  margin-bottom: 18px;
+}
+
+.filter {
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 30px;
+  padding: 11px 17px;
+  font-size: 12px;
+}
+
+.filter.active, .filter:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 26px;
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--white);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 34px rgba(56,49,35,.07);
+}
+
+.product-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/.78;
+  background: #eee9de;
+  overflow: hidden;
+}
+
+.product-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.product-card:hover .product-photo img { transform: scale(1.04); }
+
+.product-placeholder { font-size: 60px; }
+
+.badges {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.badge {
+  padding: 7px 10px;
+  border-radius: 30px;
+  background: var(--green-dark);
+  color: white;
+  font-size: 9px;
+  letter-spacing: .5px;
+}
+
+.badge.new { background: #ad7955; }
+
+.product-info { padding: 22px; }
+
+.product-category {
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 9px;
+}
+
+.product-title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.45;
+  min-height: 49px;
+  margin-bottom: 8px;
+}
+
+.product-description {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+  min-height: 38px;
+  margin-bottom: 16px;
+}
+
+.product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.product-price { font-weight: 700; font-size: 18px; }
+
+.product-price small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.add-button {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-size: 27px;
+}
+
+.add-button:hover { background: var(--green-dark); }
+
+.about {
+  margin: 120px 0;
+  padding: 75px;
+  border-radius: 30px;
+  background: #eeece2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.about p {
+  color: #777468;
+  font-size: 15px;
+  line-height: 1.9;
+  margin-top: 24px;
+}
+
+.about-mark {
+  font-family: "Cormorant Garamond",serif;
+  color: var(--green);
+  font-size: clamp(80px,11vw,140px);
+  text-align: center;
+  letter-spacing: 9px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 35px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.footer-note {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.footer-links { display: flex; gap: 22px; font-size: 12px; }
+
+/* Корзина и оформление */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(36,34,28,.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: .25s;
+}
+
+.overlay.open { opacity: 1; visibility: visible; }
+
+.drawer {
+  position: fixed;
+  z-index: 51;
+  top: 0;
+  right: 0;
+  width: min(540px,100%);
+  height: 100dvh;
+  background: var(--white);
+  transform: translateX(100%);
+  transition: transform .3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer.open { transform: translateX(0); }
+
+.drawer-header {
+  padding: 30px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawer-header h2 {
+  font-family: "Cormorant Garamond",serif;
+  font-size: 34px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.close-button {
+  border: 0;
+  background: transparent;
+  font-size: 30px;
+  color: var(--text);
+}
+
+.drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 65px 20px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 13px;
+}
+
+.empty-icon { font-size: 45px; margin-bottom: 16px; }
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.cart-item-detail {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.cart-item-price {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 12px;
+}
+
+.quantity-controls button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 50%;
+  font-size: 19px;
+}
+
+.quantity-controls span { min-width: 22px; text-align: center; font-size: 13px; }
+
+.drawer-footer {
+  padding: 24px 28px;
+  border-top: 1px solid var(--line);
+  background: var(--white);
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.total-row strong { font-size: 23px; }
+
+.delivery-note {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 13px 0 18px;
+}
+
+.full-button { width: 100%; }
+
+.checkout-form { display: grid; gap: 20px; }
+
+.checkout-form label {
+  display: grid;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.checkout-form input, .checkout-form textarea {
+  width: 100%;
+  min-height: 54px;
+  border: 1px solid #e5e0d4;
+  background: white;
+  border-radius: 15px;
+  padding: 16px;
+  font-size: 16px;
+  color: var(--text);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.checkout-form textarea { min-height: 90px; resize: vertical; }
+
+.checkout-form input:focus, .checkout-form textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(101,115,79,.10);
+  outline: none;
+}
+
+.form-heading {
+  font-family: "Cormorant Garamond",serif;
+  font-size: 31px;
+  font-weight: 500;
+  margin: 0 0 5px;
+}
+
+.checkout-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  background: #f1eee5;
+  border-radius: 15px;
+  padding: 17px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.checkout-total strong { font-size: 17px; white-space: nowrap; }
+
+.hidden { display: none !important; }
+
+/* Экран успешного оформления */
+
+.success-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px;
+  background: #65734f;
+  color: #fffdf5;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .45s ease, visibility .45s ease;
+}
+
+.success-screen.visible { opacity: 1; visibility: visible; }
+
+.success-content {
+  width: min(100%,440px);
+  text-align: center;
+  transform: translateY(18px);
+  transition: transform .5s ease;
+}
+
+.success-screen.visible .success-content { transform: translateY(0); }
+
+.success-check { width: 112px; height: 112px; margin: 0 auto 28px; }
+.success-check svg { width: 100%; height: 100%; overflow: visible; }
+
+.check-circle {
+  fill: rgba(255,255,255,.08);
+  stroke: rgba(255,255,255,.85);
+  stroke-width: 1.5;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+}
+
+.success-screen.visible .check-circle {
+  animation: drawCircle .8s ease forwards;
+}
+
+.check-path {
+  fill: none;
+  stroke: #fffdf5;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+}
+
+.success-screen.visible .check-path {
+  animation: drawCheck .45s .55s ease forwards;
+}
+
+.success-brand {
+  font-family: "Cormorant Garamond",serif;
+  font-size: 22px;
+  letter-spacing: 7px;
+  margin-bottom: 24px;
+  opacity: .85;
+}
+
+.success-content h2 {
+  font-family: "Cormorant Garamond",serif;
+  font-size: clamp(48px,10vw,68px);
+  line-height: 1;
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+
+.success-content p {
+  max-width: 340px;
+  margin: 0 auto 32px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(255,255,255,.87);
+}
+
+.success-button {
+  padding: 17px 27px;
+  border-radius: 40px;
+  border: 1px solid rgba(255,255,255,.7);
+  background: #fffdf5;
+  color: var(--green-dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.success-button:active { transform: scale(.98); }
+
+.toast {
+  position: fixed;
+  z-index: 300;
+  left: 50%;
+  bottom: 25px;
+  transform: translate(-50%,20px);
+  background: var(--green-dark);
+  color: white;
+  border-radius: 30px;
+  padding: 14px 20px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+  width: max-content;
+  max-width: calc(100% - 30px);
+  text-align: center;
+}
+
+.toast.show { opacity: 1; transform: translate(-50%,0); }
+
+@keyframes drawCircle { to { stroke-dashoffset: 0; } }
+@keyframes drawCheck { to { stroke-dashoffset: 0; } }
+
+@media (max-width: 950px) {
+  .hero-grid { gap: 35px; }
+  .hero-image { min-height: 450px; }
+  nav { gap: 18px; }
+}
+
+@media (max-width: 680px) {
+  .container { width: calc(100% - 32px); }
+  .header-inner { min-height: 72px; }
+  .logo { font-size: 36px; }
+  nav { display: none; }
+
+  .hero { padding: 55px 0 40px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  h1 { font-size: clamp(55px,13vw,76px); }
+  .hero-copy { font-size: 14px; }
+  .hero-image { min-height: 390px; border-radius: 160px 160px 20px 20px; }
+
+  .benefits { margin-bottom: 65px; padding: 20px 0; }
+  .benefit { font-size: 10px; padding: 4px; }
+  .benefit strong { font-size: 11px; }
+
+  .section-heading { display: block; }
+  .section-heading h2, .about h2 { font-size: 48px; }
+  .section-note { margin-top: 14px; }
+
+  .products { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; }
+  .product-info { padding: 13px; }
+  .product-title { font-size: 14px; min-height: 42px; }
+  .product-description { font-size: 10px; min-height: 42px; }
+  .product-price { font-size: 15px; }
+  .add-button { width: 38px; height: 38px; font-size: 23px; }
+  .badge { font-size: 8px; padding: 6px 7px; }
+
+  .about { grid-template-columns: 1fr; padding: 32px 24px; margin: 75px 0; gap: 20px; }
+  .about-mark { font-size: 80px; }
+  .about p { font-size: 13px; }
+
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-links { flex-wrap: wrap; }
+
+  .drawer-header { padding: 22px; }
+  .drawer-content { padding: 22px; }
+  .drawer-footer { padding: 20px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topline">ДОМАШНИЕ ПОЛУФАБРИКАТЫ · ХУДЖАНД</div>
+
+<header>
+  <div class="container header-inner">
+    <a class="logo" href="#" aria-label="LEPÍ — главная">LEP<span>Í</span></a>
+    <nav>
+      <a href="#catalog">Каталог</a>
+      <a href="#about">О нас</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <button class="cart-button" id="openCartButton">
+      Корзина <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">С заботой о вашем доме</div>
+        <h1>Домашний вкус.<br><em>Больше времени.</em></h1>
+        <p class="hero-copy">
+          Домашние полуфабрикаты, приготовленные с заботой.
+          Выбирайте любимые вкусы и освобождайте время для того,
+          что действительно важно.
+        </p>
+        <div class="hero-actions">
+          <a href="#catalog" class="primary-button">Выбрать продукты</a>
+          <a href="#about" class="secondary-button">О LEPÍ</a>
+        </div>
+      </div>
+      <div class="hero-image" role="img" aria-label="Домашняя еда"></div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="benefits">
+      <div class="benefit">
+        <strong>Домашнее приготовление</strong>
+        С заботой о вкусе
+      </div>
+      <div class="benefit">
+        <strong>Удобно хранить</strong>
+        Для вашего удобства
+      </div>
+      <div class="benefit">
+        <strong>Худжанд</strong>
+        Доставка по заказу
+      </div>
+    </div>
+  </div>
+
+  <section class="container" id="catalog">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">Наше меню</div>
+        <h2>Выбирайте любимое</h2>
+      </div>
+      <p class="section-note">
+        Выберите продукты, добавьте их в корзину и оформите заказ.
+        Доставка оплачивается отдельно.
+      </p>
+    </div>
+
+    <div class="filters">
+      <button class="filter active" data-filter="all">Всё меню</button>
+      <button class="filter" data-filter="pancakes">Блинчики</button>
+      <button class="filter" data-filter="syrniki">Сырники</button>
+      <button class="filter" data-filter="cutlets">Котлеты</button>
+      <button class="filter" data-filter="other">Другое</button>
+    </div>
+
+    <div class="products" id="products"></div>
+  </section>
+
+  <section class="container about" id="about">
+    <div>
+      <div class="eyebrow">С любовью к домашнему</div>
+      <h2>LEPÍ — вкус домашнего уюта</h2>
+      <p>
+        Мы хотим, чтобы дома было вкусно, а готовить было проще.
+        Выбирайте любимые продукты, оформляйте заказ, а мы свяжемся
+        с вами для его подтверждения.
+      </p>
+    </div>
+    <div class="about-mark">LEPÍ</div>
+  </section>
+</main>
+
+<footer id="contacts">
+  <div class="container footer-inner">
+    <div>
+      <div class="logo">LEP<span>Í</span></div>
+      <div class="footer-note">Домашние полуфабрикаты · Худжанд</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lepifoods/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#" id="footerCartLink">Корзина</a>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="cartDrawer" aria-label="Корзина" aria-hidden="true">
+  <div class="drawer-header">
+    <h2>Ваш заказ</h2>
+    <button class="close-button" data-close aria-label="Закрыть">×</button>
+  </div>
+  <div class="drawer-content" id="cartContent"></div>
+  <div class="drawer-footer" id="cartFooter">
+    <div class="total-row">
+      <span>Итого за продукты</span>
+      <strong id="cartTotal">0 сомони</strong>
+    </div>
+    <p class="delivery-note">
+      Доставка оплачивается отдельно. Её стоимость уточняется
+      при согласовании заказа.
+    </p>
+    <button class="primary-button full-button" id="checkoutButton">
+      Оформить заказ
+    </button>
+  </div>
+</aside>
+
+<aside class="drawer" id="checkoutDrawer" aria-label="Оформление заказа" aria-hidden="true">
+  <div class="drawer-header">
+    <h2>Оформление</h2>
+    <button class="close-button" data-close aria-label="Закрыть">×</button>
+  </div>
+
+  <div class="drawer-content">
+    <form class="checkout-form" id="checkoutForm">
+      <h3 class="form-heading">Расскажите о себе</h3>
+
+      <label>
+        Ваше имя *
+        <input
+          name="customerName"
+          type="text"
+          autocomplete="name"
+          required
+          maxlength="100"
+          placeholder="Как к вам обращаться"
+        >
+      </label>
+
+      <label>
+        Номер телефона *
+        <input
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          required
+          maxlength="30"
+          placeholder="+992 ..."
+        >
+      </label>
+
+      <label>
+        Адрес доставки *
+        <input
+          name="address"
+          type="text"
+          autocomplete="street-address"
+          required
+          maxlength="250"
+          placeholder="Улица, дом, ориентир"
+        >
+      </label>
+
+      <label>
+        Комментарий к заказу
+        <textarea
+          name="comment"
+          maxlength="1000"
+          placeholder="Пожелания или удобное время доставки"
+        ></textarea>
+      </label>
+
+      <div class="checkout-total">
+        <span>
+          Стоимость продуктов<br>
+          <small>Доставка оплачивается отдельно</small>
+        </span>
+        <strong id="checkoutTotal">0 сомони</strong>
+      </div>
+
+      <button class="primary-button full-button" type="submit" id="submitOrderButton">
+        Оформить заказ
+      </button>
+
+      <p class="delivery-note">
+        После отправки заказа мы свяжемся с вами для подтверждения
+        деталей и стоимости доставки.
+      </p>
+    </form>
+  </div>
+</aside>
+
+<div class="success-screen" id="successScreen" aria-live="polite" aria-hidden="true">
+  <div class="success-content">
+    <div class="success-check">
+      <svg viewBox="0 0 80 80" aria-hidden="true">
+        <circle class="check-circle" cx="40" cy="40" r="35"></circle>
+        <path class="check-path" d="M22 41 L34 53 L58 27"></path>
+      </svg>
+    </div>
+    <div class="success-brand">LEPÍ</div>
+    <h2>Заказ оформлен</h2>
+    <p>
+      Спасибо, что выбираете LEPÍ.
+      Мы свяжемся с вами для подтверждения заказа.
+    </p>
+    <button class="success-button" id="finishSuccessButton">
+      Вернуться на сайт
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+"use strict";
+
+/*
+  TELEGRAM:
+  Для автоматического получения заказов укажите адрес своего серверного API.
+
+  Пример:
+  const ORDER_ENDPOINT = "https://your-domain.example/api/orders";
+
+  Сервер должен принять POST с JSON, проверить данные и отправить заказ
+  через Telegram Bot API в ваш чат.
+
+  Не размещайте токен Telegram-бота в этом HTML.
+  Если адрес сервера пустой, сайт НЕ будет притворяться, что заказ
+  был отправлен: он покажет сообщение о необходимости подключения.
+*/
+
+const ORDER_ENDPOINT = "";
+
+const PRODUCTS = [
+  {
+    id: "pancake-curd",
+    name: "Блинчики с творогом",
+    category: "pancakes",
+    price: 6,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 60,
+    description: "Нежная творожная начинка",
+    emoji: "🥞",
+    image: "",
+    badges: []
+  },
+  {
+    id: "pancake-condensed",
+    name: "Блинчики с варёной сгущёнкой",
+    category: "pancakes",
+    price: 6,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 60,
+    description: "Сладкая начинка с домашним вкусом",
+    emoji: "🥞",
+    image: "",
+    badges: ["new"]
+  },
+  {
+    id: "pancake-nutella",
+    name: "Блинчики с Nutella и бананом",
+    category: "pancakes",
+    price: 8,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 80,
+    description: "Шоколадная начинка с бананом",
+    emoji: "🍫",
+    image: "",
+    badges: []
+  },
+  {
+    id: "pancake-meat",
+    name: "Блинчики с мясом",
+    category: "pancakes",
+    price: 9,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 90,
+    description: "Сытная мясная начинка",
+    emoji: "🥞",
+    image: "",
+    badges: []
+  },
+  {
+    id: "pancake-apple",
+    name: "Блинчики с яблоком и корицей",
+    category: "pancakes",
+    price: 7,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 70,
+    description: "Яблочная начинка с ароматной корицей",
+    emoji: "🍎",
+    image: "",
+    badges: ["hit", "new"]
+  },
+  {
+    id: "syrniki-classic",
+    name: "Сырники классические",
+    category: "syrniki",
+    price: 6,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 60,
+    description: "Классические сырники из творога",
+    emoji: "🥞",
+    image: "",
+    badges: []
+  },
+  {
+    id: "syrniki-chocolate",
+    name: "Сырники шоколадные",
+    category: "syrniki",
+    price: 7,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 70,
+    description: "Нежный шоколадный вкус",
+    emoji: "🍫",
+    image: "",
+    badges: []
+  },
+  {
+    id: "syrniki-raffaello",
+    name: "Сырники «Рафаэлло»",
+    category: "syrniki",
+    price: 7,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 70,
+    description: "Нежный десертный вариант",
+    emoji: "🥥",
+    image: "",
+    badges: []
+  },
+  {
+    id: "syrniki-condensed",
+    name: "Сырники с варёной сгущёнкой",
+    category: "syrniki",
+    price: 7,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 70,
+    description: "Новинка с варёной сгущёнкой",
+    emoji: "🤎",
+    image: "",
+    badges: ["new"]
+  },
+  {
+    id: "chicken-cutlets",
+    name: "Куриные котлеты с овощами",
+    category: "cutlets",
+    price: 7,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 70,
+    description: "70 сомони за 10 штук",
+    emoji: "🍗",
+    image: "",
+    badges: []
+  },
+  {
+    id: "chopped-chicken",
+    name: "Рубленая курица",
+    category: "cutlets",
+    price: 7.5,
+    unit: "шт.",
+    packSize: 8,
+    packPrice: 60,
+    description: "60 сомони за первые 8 штук",
+    emoji: "🍗",
+    image: "",
+    badges: []
+  },
+  {
+    id: "beef-cutlets",
+    name: "Котлеты говяжьи",
+    category: "cutlets",
+    price: 10,
+    unit: "шт.",
+    packSize: 10,
+    packPrice: 100,
+    description: "10 сомони за штуку",
+    emoji: "🍖",
+    image: "",
+    badges: []
+  },
+  {
+    id: "meatballs",
+    name: "Фрикадельки",
+    category: "other",
+    price: 25,
+    unit: "пачка",
+    packSize: 1,
+    packPrice: 25,
+    description: "Одна упаковка — 250 граммов",
+    emoji: "🍲",
+    image: "",
+    badges: []
+  }
+];
+
+const cart = new Map();
+
+const money = value =>
+  `${Number(value.toFixed(2)).toString()} сомони`;
+
+const getProduct = id => PRODUCTS.find(product => product.id === id);
+
+const getQuantity = id => cart.get(id) || 0;
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function getCategoryName(category) {
+  return ({
+    pancakes: "Блинчики",
+    syrniki: "Сырники",
+    cutlets: "Котлеты",
+    other: "Другое"
+  })[category] || "";
+}
+
+function getBadgeHTML(badges) {
+  return badges.map(badge => {
+    if (badge === "new") {
+      return '<span class="badge new">НОВИНКА</span>';
+    }
+    if (badge === "hit") {
+      return '<span class="badge">ХИТ СЕЗОНА</span>';
+    }
+    return "";
+  }).join("");
+}
+
+function getProductImage(product) {
+  if (!product.image) {
+    return `<span class="product-placeholder">${product.emoji}</span>`;
+  }
+
+  return `<img src="${escapeHTML(product.image)}"
+    alt="${escapeHTML(product.name)}"
+    loading="lazy"
+    onerror="this.style.display='none'">`;
+}
+
+function renderProducts(filter = "all") {
+  const container = document.getElementById("products");
+
+  const visibleProducts = PRODUCTS.filter(product =>
+    filter === "all" || product.category === filter
+  );
+
+  container.innerHTML = visibleProducts.map(product => `
+    <article class="product-card">
+      <div class="product-photo">
+        ${getProductImage(product)}
+      </div>
+      <div class="badges">${getBadgeHTML(product.badges)}</div>
+      <div class="product-info">
+        <div class="product-category">${getCategoryName(product.category)}</div>
+        <div class="product-title">${escapeHTML(product.name)}</div>
+        <div class="product-description">${escapeHTML(product.description)}</div>
+        <div class="product-bottom">
+          <div class="product-price">
+            ${money(product.packPrice)}
+            <small>${product.id === "meatballs"
+              ? "за пачку 250 г"
+              : `за ${product.packSize} шт.`}</small>
+          </div>
+          <button class="add-button" data-add="${product.id}"
+            aria-label="Добавить ${escapeHTML(product.name)}">+</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function getLineTotal(product, quantity) {
+  if (product.id === "meatballs") {
+    return quantity * product.price;
+  }
+
+  const initialCount = Math.min(quantity, product.packSize);
+  const extraCount = Math.max(0, quantity - product.packSize);
+
+  const initialTotal = initialCount === product.packSize
+    ? product.packPrice
+    : initialCount * product.price;
+
+  return initialTotal + extraCount * product.price;
+}
+
+function getCartTotal() {
+  let total = 0;
+
+  cart.forEach((quantity, id) => {
+    const product = getProduct(id);
+    if (product) total += getLineTotal(product, quantity);
+  });
+
+  return total;
+}
+
+function getCartCount() {
+  let count = 0;
+  cart.forEach(quantity => count += quantity);
+  return count;
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2600);
+}
+
+function addProduct(id) {
+  const product = getProduct(id);
+  if (!product) return;
+
+  const current = getQuantity(id);
+
+  if (current === 0) {
+    cart.set(id, product.packSize);
+    showToast(product.id === "meatballs"
+      ? "Добавлена 1 пачка"
+      : `Добавлено ${product.packSize} шт.`);
+  } else {
+    cart.set(id, current + 1);
+    showToast("Добавлена 1 штука");
+  }
+
+  renderCart();
+  updateCartCount();
+}
+
+function increaseProduct(id) {
+  if (!getProduct(id)) return;
+  cart.set(id, getQuantity(id) + 1);
+  renderCart();
+  updateCartCount();
+}
+
+function decreaseProduct(id) {
+  const quantity = getQuantity(id);
+  if (!quantity) return;
+
+  if (quantity <= 1) cart.delete(id);
+  else cart.set(id, quantity - 1);
+
+  renderCart();
+  updateCartCount();
+}
+
+function updateCartCount() {
+  document.getElementById("cartCount").textContent = getCartCount();
+}
+
+function renderCart() {
+  const content = document.getElementById("cartContent");
+  const footer = document.getElementById("cartFooter");
+  const total = money(getCartTotal());
+
+  document.getElementById("cartTotal").textContent = total;
+  document.getElementById("checkoutTotal").textContent = total;
+
+  if (cart.size === 0) {
+    content.innerHTML = `
+      <div class="empty-cart">
+        <div class="empty-icon">🧺</div>
+        Корзина пока пуста.<br>
+        Выберите что-нибудь вкусное из каталога.
+      </div>
+    `;
+    footer.classList.add("hidden");
+    return;
+  }
+
+  footer.classList.remove("hidden");
+
+  content.innerHTML = Array.from(cart.entries()).map(([id, quantity]) => {
+    const product = getProduct(id);
+    if (!product) return "";
+
+    const countLabel = product.id === "meatballs"
+      ? `${quantity} пач. · 250 г каждая`
+      : `${quantity} шт.`;
+
+    const priceLabel = product.id === "meatballs"
+      ? "25 сомони за пачку"
+      : quantity < product.packSize
+        ? `${money(product.price)} за штуку`
+        : `${money(product.packPrice)} за первые ${product.packSize} шт., затем поштучно`;
+
+    return `
+      <div class="cart-item">
+        <div>
+          <div class="cart-item-name">${escapeHTML(product.name)}</div>
+          <div class="cart-item-detail">
+            ${countLabel}<br>${priceLabel}
+          </div>
+        </div>
+        <div>
+          <div class="cart-item-price">${money(getLineTotal(product, quantity))}</div>
+          <div class="quantity-controls">
+            <button data-minus="${id}" aria-label="Уменьшить количество">−</button>
+            <span>${quantity}</span>
+            <button data-plus="${id}" aria-label="Увеличить количество">+</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function openDrawer(drawerId) {
+  document.getElementById("cartDrawer").classList.remove("open");
+  document.getElementById("checkoutDrawer").classList.remove("open");
+
+  const drawer = document.getElementById(drawerId);
+  drawer.classList.add("open");
+  drawer.setAttribute("aria-hidden", "false");
+
+  document.getElementById("overlay").classList.add("open");
+  document.body.classList.add("locked");
+}
+
+function openCart() {
+  renderCart();
+  openDrawer("cartDrawer");
+}
+
+function openCheckout() {
+  if (cart.size === 0) {
+    showToast("Сначала добавьте продукты в корзину");
+    return;
+  }
+
+  renderCart();
+  openDrawer("checkoutDrawer");
+}
+
+function closePanels() {
+  ["cartDrawer", "checkoutDrawer"].forEach(id => {
+    const drawer = document.getElementById(id);
+    drawer.classList.remove("open");
+    drawer.setAttribute("aria-hidden", "true");
+  });
+
+  document.getElementById("overlay").classList.remove("open");
+  document.body.classList.remove("locked");
+}
+
+function showSuccessScreen() {
+  closePanels();
+
+  const screen = document.getElementById("successScreen");
+  screen.classList.add("visible");
+  screen.setAttribute("aria-hidden", "false");
+  document.body.classList.add("locked");
+}
+
+function finishSuccess() {
+  const screen = document.getElementById("successScreen");
+  screen.classList.remove("visible");
+  screen.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("locked");
+
+  cart.clear();
+  renderCart();
+  updateCartCount();
+  document.getElementById("checkoutForm").reset();
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function buildOrderPayload(customer) {
+  return {
+    customer,
+    items: Array.from(cart.entries()).map(([id, quantity]) => {
+      const product = getProduct(id);
+
+      return {
+        id,
+        name: product.name,
+        quantity,
+        unit: product.unit,
+        total: getLineTotal(product, quantity)
+      };
+    }),
+    total: getCartTotal(),
+    delivery: "Оплачивается отдельно",
+    createdAt: new Date().toISOString()
+  };
+}
+
+async function submitOrder(customer) {
+  if (!ORDER_ENDPOINT.trim()) {
+    showToast("Сначала подключите сервер для приёма заказов");
+    return false;
+  }
+
+  const response = await fetch(ORDER_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(buildOrderPayload(customer))
+  });
+
+  if (!response.ok) {
+    throw new Error("Сервер не подтвердил получение заказа");
+  }
+
+  return true;
+}
+
+document.getElementById("products").addEventListener("click", event => {
+  const button = event.target.closest("[data-add]");
+  if (button) addProduct(button.dataset.add);
+});
+
+document.getElementById("cartContent").addEventListener("click", event => {
+  const plus = event.target.closest("[data-plus]");
+  const minus = event.target.closest("[data-minus]");
+
+  if (plus) increaseProduct(plus.dataset.plus);
+  if (minus) decreaseProduct(minus.dataset.minus);
+});
+
+document.getElementById("openCartButton").addEventListener("click", openCart);
+document.getElementById("footerCartLink").addEventListener("click", event => {
+  event.preventDefault();
+  openCart();
+});
+
+document.getElementById("checkoutButton").addEventListener("click", openCheckout);
+document.querySelectorAll("[data-close]").forEach(button => {
+  button.addEventListener("click", closePanels);
+});
+
+document.getElementById("overlay").addEventListener("click", closePanels);
+document.getElementById("finishSuccessButton").addEventListener("click", finishSuccess);
+
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".filter").forEach(item =>
+      item.classList.remove("active")
+    );
+
+    button.classList.add("active");
+    renderProducts(button.dataset.filter);
+  });
+});
+
+document.getElementById("checkoutForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+
+  if (!form.reportValidity()) return;
+
+  if (cart.size === 0) {
+    showToast("Корзина пуста");
+    return;
+  }
+
+  const button = document.getElementById("submitOrderButton");
+  const data = new FormData(form);
+
+  const customer = {
+    name: String(data.get("customerName") || "").trim(),
+    phone: String(data.get("phone") || "").trim(),
+    address: String(data.get("address") || "").trim(),
+    comment: String(data.get("comment") || "").trim()
+  };
+
+  if (!customer.name || !customer.phone || !customer.address) {
+    showToast("Заполните имя, телефон и адрес");
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Оформляем…";
+
+  try {
+    const success = await submitOrder(customer);
+
+    if (success) {
+      showSuccessScreen();
+    }
+  } catch (error) {
+    console.error(error);
+    showToast("Не удалось отправить заказ. Попробуйте ещё раз.");
+  } finally {
+    button.disabled = false;
+    button.textContent = "Оформить заказ";
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closePanels();
+});
+
+renderProducts();
+renderCart();
+updateCartCount();
+</script>
+
+</body>
+</html>
